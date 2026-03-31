@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>张成龙 Chenglong Zhang)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>张成龙 (Chenglong Zhang) - 学术主页</title>
 
     <!-- 引入 Tailwind CSS 和 FontAwesome 图标库 -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,7 +29,6 @@
             overflow: hidden;
         }
 
-        /* 具象化：深度神经网络层 (纯代码内联 SVG 绘制的节点与突触) */
         .hero-cyber-medical::before {
             content: '';
             position: absolute;
@@ -41,7 +40,6 @@
             pointer-events: none;
         }
 
-        /* 具象化：医疗脉搏波层 (AI for Medicine) */
         .pulse-wave-bg {
             position: absolute;
             bottom: 5%;
@@ -55,7 +53,6 @@
             pointer-events: none;
         }
 
-        /* 氛围光晕 */
         .glow-orb {
             position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0;
             animation: orb-breathe 8s ease-in-out infinite alternate;
@@ -68,20 +65,23 @@
         @keyframes orb-breathe { 0% { transform: scale(0.8); opacity: 0.5; } 100% { transform: scale(1.2); opacity: 1; } }
 
         /* =========================================
-           2. 玻璃拟态数据卡片
+           2. 玻璃拟态数据卡片 (移动端适配)
            ========================================= */
         .section-card {
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 1.25rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1.25rem; /* 移动端内边距变小 */
+            margin-bottom: 1.5rem;
             border: 1px solid rgba(34, 211, 238, 0.15);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05);
             position: relative;
             z-index: 10;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @media (min-width: 768px) {
+            .section-card { padding: 2rem; margin-bottom: 2rem; } /* 桌面端恢复大边距 */
         }
         .section-card::before {
             content: ''; position: absolute; inset: 0; border-radius: 1.25rem; padding: 2px;
@@ -97,13 +97,15 @@
         }
         .section-card:hover::before { opacity: 1; }
 
-        /* 带有神经网络节点的栏目标题 */
         .section-title {
-            font-size: 1.4rem; font-weight: 800; color: #f8fafc;
+            font-size: 1.25rem; font-weight: 800; color: #f8fafc;
             display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 1.5rem; padding-bottom: 1rem;
+            margin-bottom: 1.25rem; padding-bottom: 0.75rem;
             border-bottom: 1px solid rgba(56, 189, 248, 0.1);
             position: relative;
+        }
+        @media (min-width: 768px) {
+            .section-title { font-size: 1.4rem; margin-bottom: 1.5rem; padding-bottom: 1rem; }
         }
         .section-title::after {
             content: ''; position: absolute; left: 0; bottom: -1px;
@@ -112,22 +114,25 @@
             box-shadow: 0 0 10px #06b6d4;
         }
 
-        /* 神经元标题图标簇 (模仿一个感知机结构) */
         .neural-icon-cluster {
             display: inline-flex; align-items: center; justify-content: center;
-            position: relative; width: 40px; height: 40px; margin-right: 12px;
+            position: relative; width: 36px; height: 36px; margin-right: 10px;
         }
+        @media (min-width: 768px) { .neural-icon-cluster { width: 40px; height: 40px; margin-right: 12px; } }
+        
         .neural-icon-cluster::before {
             content: ''; position: absolute; top: 50%; left: -5px; right: -5px; height: 1px;
             background: rgba(34, 211, 238, 0.5); z-index: 1;
         }
         .neural-node-main {
-            background: #020617; color: #22d3ee; width: 32px; height: 32px;
+            background: #020617; color: #22d3ee; width: 28px; height: 28px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 50%; border: 2px solid rgba(34, 211, 238, 0.6);
             box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), inset 0 0 10px rgba(6, 182, 212, 0.3);
-            z-index: 2; position: relative; font-size: 0.9rem;
+            z-index: 2; position: relative; font-size: 0.8rem;
         }
+        @media (min-width: 768px) { .neural-node-main { width: 32px; height: 32px; font-size: 0.9rem; } }
+
         .neural-node-small-1, .neural-node-small-2 {
             position: absolute; width: 8px; height: 8px; border-radius: 50%;
             background: #10b981; box-shadow: 0 0 8px #10b981; z-index: 3;
@@ -139,32 +144,33 @@
            3. 数据流悬浮列表 & 霓虹标签
            ========================================= */
         .list-item-hover {
-            padding: 14px 16px; border-radius: 8px;
+            padding: 12px 14px; border-radius: 8px;
             background: rgba(15, 23, 42, 0.4);
             border-left: 2px solid rgba(56, 189, 248, 0.2);
             transition: all 0.3s ease; margin-bottom: 10px;
             position: relative; overflow: hidden;
         }
-        /* 模拟信号穿过的动画 */
+        @media (min-width: 768px) { .list-item-hover { padding: 14px 16px; } }
+        
         .list-item-hover::before {
             content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 0%;
             background: #22d3ee; box-shadow: 0 0 15px #22d3ee; transition: height 0.3s ease;
         }
         .list-item-hover:hover {
-            background: rgba(30, 41, 59, 0.8);
-            border-left-color: transparent; 
+            background: rgba(30, 41, 59, 0.8); border-left-color: transparent; 
             box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
             color: #f8fafc; transform: translateX(4px);
         }
         .list-item-hover:hover::before { height: 100%; }
 
-        /* 高级终端仪表盘标签 */
         .tag-badge {
-            display: inline-block; padding: 2px 8px; border-radius: 4px;
-            font-size: 0.7rem; font-weight: 700; font-family: 'JetBrains Mono', monospace;
-            vertical-align: middle; margin-left: 6px; letter-spacing: 0.5px;
-            text-transform: uppercase;
+            display: inline-block; padding: 2px 6px; border-radius: 4px;
+            font-size: 0.65rem; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+            vertical-align: middle; margin-left: 4px; letter-spacing: 0.5px;
+            text-transform: uppercase; white-space: nowrap;
         }
+        @media (min-width: 768px) { .tag-badge { padding: 2px 8px; font-size: 0.7rem; margin-left: 6px; } }
+
         .tag-ccf { background: rgba(225, 29, 72, 0.15); color: #fb7185; border: 1px solid rgba(225, 29, 72, 0.4); box-shadow: inset 0 0 8px rgba(225, 29, 72, 0.2); text-shadow: 0 0 5px rgba(225, 29, 72, 0.5); }
         .tag-jcr { background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.4); box-shadow: inset 0 0 8px rgba(14, 165, 233, 0.2); text-shadow: 0 0 5px rgba(14, 165, 233, 0.5); }
         .tag-esi { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); box-shadow: inset 0 0 8px rgba(245, 158, 11, 0.2); text-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
@@ -174,14 +180,11 @@
            4. 定制化赛博滚动条 & 数据消隐效果
            ========================================= */
         .scroll-box { 
-            overflow-y: auto; 
-            padding-right: 12px; 
-            overscroll-behavior-y: contain; /* 防止内容滚完后页面跟着滚 */
-            /* 兼容 Firefox */
-            scrollbar-width: thin;
-            scrollbar-color: rgba(34, 211, 238, 0.6) rgba(15, 23, 42, 0.3);
+            overflow-y: auto; padding-right: 8px; overscroll-behavior-y: contain; 
+            scrollbar-width: thin; scrollbar-color: rgba(34, 211, 238, 0.6) rgba(15, 23, 42, 0.3);
         }
-        /* 数据消隐渐变遮罩 (让底部文字像没入黑暗) */
+        @media (min-width: 768px) { .scroll-box { padding-right: 12px; } }
+
         .mask-fade-y {
             -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
             mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
@@ -190,8 +193,8 @@
             -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
             mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
         }
-        /* 兼容 Webkit (Chrome/Edge/Safari) */
-        .scroll-box::-webkit-scrollbar { width: 5px; }
+        
+        .scroll-box::-webkit-scrollbar { width: 4px; }
         .scroll-box::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.3); border-radius: 4px; }
         .scroll-box::-webkit-scrollbar-thumb { background: rgba(34, 211, 238, 0.6); border-radius: 4px; }
         .scroll-box::-webkit-scrollbar-thumb:hover { background: rgba(34, 211, 238, 0.9); box-shadow: 0 0 8px rgba(34, 211, 238, 0.8); }
@@ -199,26 +202,32 @@
         /* =========================================
            5. 深度神经结构时间轴 (工作/教育经历)
            ========================================= */
-        .nn-timeline-container { position: relative; padding-left: 2rem; margin-top: 1rem; }
-        /* 垂直的突触主干 */
+        .nn-timeline-container { position: relative; padding-left: 1.5rem; margin-top: 1rem; }
+        @media (min-width: 768px) { .nn-timeline-container { padding-left: 2rem; } }
+
         .nn-timeline-container::before {
-            content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px;
+            content: ''; position: absolute; left: 3px; top: 0; bottom: 0; width: 2px;
             background: linear-gradient(to bottom, rgba(34, 211, 238, 0.6), rgba(16, 185, 129, 0.2));
             box-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
         }
+        @media (min-width: 768px) { .nn-timeline-container::before { left: 7px; } }
+
         .nn-layer { position: relative; padding-bottom: 2rem; }
         .nn-layer:last-child { padding-bottom: 0; }
         
-        /* 时间轴节点 -> 多层感知机结构 */
         .nn-node-cluster {
-            position: absolute; left: -2rem; top: 2px;
+            position: absolute; left: -1.5rem; top: 2px;
             display: flex; flex-direction: column; gap: 4px; align-items: center;
         }
+        @media (min-width: 768px) { .nn-node-cluster { left: -2rem; } }
+
         .nn-node {
-            width: 10px; height: 10px; border-radius: 50%;
+            width: 8px; height: 8px; border-radius: 50%;
             background: #020617; border: 2px solid #22d3ee;
             box-shadow: 0 0 8px #22d3ee; transition: all 0.3s;
         }
+        @media (min-width: 768px) { .nn-node { width: 10px; height: 10px; } }
+
         .nn-node.medical { border-color: #10b981; box-shadow: 0 0 8px #10b981; }
         .nn-layer:hover .nn-node { background: #22d3ee; box-shadow: 0 0 15px #22d3ee, 0 0 30px #06b6d4; }
         .nn-layer:hover .nn-node.medical { background: #10b981; box-shadow: 0 0 15px #10b981, 0 0 30px #059669; }
@@ -227,54 +236,64 @@
 
 <body class="antialiased selection:bg-cyan-900 selection:text-cyan-100">
 
-    <!-- 顶部神经脉冲横幅 (Hero Section) -->
-    <header class="hero-cyber-medical pt-32 pb-28 px-6 shadow-[0_10px_50px_rgba(0,0,0,0.8)] border-b border-cyan-900/50">
+    <!-- 顶部神经脉冲横幅 (Hero Section) 优化移动端间距 -->
+    <header class="hero-cyber-medical pt-20 pb-16 md:pt-32 md:pb-28 px-4 md:px-6 shadow-[0_10px_50px_rgba(0,0,0,0.8)] border-b border-cyan-900/50">
         <!-- 动态底层 -->
         <div class="orb-cyan glow-orb"></div>
         <div class="orb-emerald glow-orb"></div>
         <div class="pulse-wave-bg"></div>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-center relative z-10">
             <!-- 核心身份面板 -->
-            <div class="lg:col-span-12 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div class="lg:col-span-12 space-y-5 md:space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
                 
                 <!-- 神经元激活状态提示 -->
-                <div class="flex items-center gap-3 mb-2 px-3 py-1 rounded-full border border-cyan-800/50 bg-cyan-950/40 backdrop-blur-md">
+                <div class="flex items-center justify-center gap-2 px-3 py-1 rounded-full border border-cyan-800/50 bg-cyan-950/40 backdrop-blur-md">
                     <span class="relative flex h-2 w-2">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_#10b981]"></span>
                     </span>
-                  </div>
+                    <span class="text-[10px] md:text-[11px] font-mono tracking-widest text-cyan-300 uppercase">Neural Network Active</span>
+                </div>
 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight drop-shadow-2xl flex items-end justify-center lg:justify-start">
-                    <span class="text-white text-shadow-sm">张成龙</span>
-                    <span class="text-2xl lg:text-3xl font-light text-cyan-200/80 ml-4 tracking-widest font-mono">Chenglong Zhang</span>
+                <!-- 姓名区域：修复移动端折行问题 -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight drop-shadow-2xl flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-1 lg:gap-4">
+                    <span class="text-white text-shadow-sm whitespace-nowrap">张成龙</span>
+                    <span class="text-xl md:text-2xl lg:text-3xl font-light text-cyan-200/80 tracking-widest font-mono whitespace-nowrap">Chenglong Zhang</span>
                 </h1>
                 
-                <p class="text-cyan-50 font-medium text-lg md:text-[19px] tracking-wide lg:border-l-2 border-emerald-400 lg:pl-5 max-w-3xl leading-relaxed">
-                    多模态学习 <span class="mx-2 text-cyan-600 font-bold">|</span> AI For Medicine <span class="mx-2 text-cyan-600 font-bold">|</span> 随机配置网络 <span class="mx-2 text-cyan-600 font-bold">|</span> 群体智能优化
-                </p>
+                <!-- 研究方向：优化移动端自适应折行 -->
+                <div class="flex flex-wrap justify-center lg:justify-start items-center gap-x-2 gap-y-1 md:gap-y-2 text-cyan-50 font-medium text-[13px] md:text-[19px] tracking-wide lg:border-l-2 border-emerald-400 lg:pl-5 max-w-3xl text-center lg:text-left leading-relaxed">
+                    <span class="whitespace-nowrap">多模态学习</span>
+                    <span class="text-cyan-600 font-bold hidden sm:inline">|</span>
+                    <span class="whitespace-nowrap">AI For Medicine</span>
+                    <span class="text-cyan-600 font-bold hidden sm:inline">|</span>
+                    <span class="whitespace-nowrap">随机配置网络</span>
+                    <span class="text-cyan-600 font-bold hidden sm:inline">|</span>
+                    <span class="whitespace-nowrap">群体智能优化</span>
+                </div>
 
-                <div class="flex flex-wrap justify-center lg:justify-start gap-4 mt-6 text-slate-300 text-sm md:text-[14px] font-mono">
-                    <div class="flex items-center gap-2.5 bg-slate-900/60 px-5 py-2.5 rounded-lg border border-slate-700/50 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]">
+                <!-- 信息卡片：移动端宽度与文字适配 -->
+                <div class="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 mt-4 md:mt-6 text-slate-300 text-xs md:text-[14px] font-mono w-full sm:w-auto">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-2 bg-slate-900/60 px-4 py-2.5 md:px-5 md:py-2.5 rounded-lg border border-slate-700/50 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)] w-full sm:w-auto">
                         <i class="fas fa-project-diagram text-emerald-400 drop-shadow-[0_0_5px_#10b981]"></i>
-                        <span>博士后研究员 · 香港中文大学(深圳) & 中国科学技术大学</span>
+                        <span class="text-center md:text-left leading-tight">博士后研究员 · 香港中文大学(深圳) & 中国科学技术大学</span>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-slate-900/60 px-5 py-2.5 rounded-lg border border-slate-700/50 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-2 bg-slate-900/60 px-4 py-2.5 md:px-5 md:py-2.5 rounded-lg border border-slate-700/50 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)] w-full sm:w-auto">
                         <i class="fas fa-satellite-dish text-cyan-400 drop-shadow-[0_0_5px_#22d3ee]"></i>
-                        <span>zhangchl@cuhk.edu.cn | zhangchl@ustc.edu.cn</span>
+                        <span class="text-center md:text-left leading-tight break-all md:break-normal">zhangchl@cuhk.edu.cn<span class="hidden sm:inline"> | </span><br class="sm:hidden">zhangchl@ustc.edu.cn</span>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-slate-900/60 px-5 py-2.5 rounded-lg border border-slate-700/50 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-2 bg-slate-900/60 px-4 py-2.5 md:px-5 md:py-2.5 rounded-lg border border-slate-700/50 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)] w-full sm:w-auto">
                         <i class="fas fa-map-marker-alt text-cyan-400 drop-shadow-[0_0_5px_#22d3ee]"></i>
-                        <span>广东 深圳 / 安徽 合肥</span>
+                        <span class="text-center md:text-left leading-tight">广东 深圳 / 安徽 合肥</span>
                     </div>
                 </div>
 
-                <div class="pt-8">
-                    <a href="https://scholar.google.com/citations?user=hLYl49wAAAAJ" target="_blank" class="group relative inline-flex items-center justify-center px-8 py-3.5 font-bold text-slate-900 bg-cyan-400 rounded-lg overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)]">
+                <div class="pt-4 md:pt-8 w-full md:w-auto text-center md:text-left">
+                    <a href="https://scholar.google.com/citations?user=hLYl49wAAAAJ" target="_blank" class="group relative inline-flex items-center justify-center px-8 py-3.5 font-bold text-slate-900 bg-cyan-400 rounded-lg overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] w-full md:w-auto">
                         <span class="absolute inset-0 w-full h-full bg-gradient-to-br from-cyan-300 via-cyan-400 to-emerald-400 group-hover:from-emerald-300 group-hover:via-cyan-400 group-hover:to-cyan-300"></span>
-                        <span class="relative flex items-center gap-2 font-mono">
-                            <i class="fas fa-graduation-cap text-lg"></i> 前往 Google Scholar
+                        <span class="relative flex items-center gap-2 font-mono text-sm md:text-base">
+                            <i class="fas fa-graduation-cap text-lg"></i> Google Scholar
                         </span>
                     </a>
                 </div>
@@ -282,8 +301,8 @@
         </div>
     </header>
 
-    <!-- 主体内容网格布局 -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 relative -mt-16">
+    <!-- 主体内容网格布局 优化移动端上浮距离 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 relative -mt-6 md:-mt-16 z-20">
         
         <!-- 左侧核心区 (占据 8 列) -->
         <div class="lg:col-span-8 space-y-6">
@@ -300,27 +319,27 @@
                         个人简介
                     </span>
                 </h2>
-                <div class="text-slate-300 text-[15.5px] leading-loose space-y-5 text-justify">
+                <div class="text-slate-300 text-[14.5px] md:text-[15.5px] leading-loose space-y-4 md:space-y-5 text-justify">
                     <p>
                         <strong>张成龙</strong>，博士后，现于香港中文大学（深圳）数据科学学院及中国科学技术大学信息科学技术学院从事博士后研究，
-                        合作导师：<span class="text-cyan-300 font-bold border-b border-cyan-800 pb-0.5 hover:text-cyan-200 hover:border-cyan-400 transition cursor-default">张大鹏(David Zhang)教授</span>（加拿大皇家科学院院士、加拿大工程院院士、IEEE Life Fellow）、
+                        合作导师：<span class="text-cyan-300 font-bold border-b border-cyan-800 pb-0.5 hover:text-cyan-200 hover:border-cyan-400 transition cursor-default">张大鹏（David Zhang）教授</span>（加拿大皇家科学院院士、加拿大工程院院士、IEEE Life Fellow）、
                         <span class="text-cyan-300 font-bold border-b border-cyan-800 pb-0.5 hover:text-cyan-200 hover:border-cyan-400 transition cursor-default">吴枫教授</span>（中国工程院院士、中国科学技术大学副校长、IEEE Fellow）。
-                        博士毕业于中国矿业大学计算机科学与技术学院（导师：<span class="text-cyan-300 font-bold border-b border-cyan-800 pb-0.5 hover:text-cyan-200 hover:border-cyan-400 transition cursor-default">丁世飞教授</span>，CAAI Fellow）。
+                        博士毕业于中国矿业大学计算机科学与技术学院计算机应用技术专业，导师：<span class="text-cyan-300 font-bold border-b border-cyan-800 pb-0.5 hover:text-cyan-200 hover:border-cyan-400 transition cursor-default">丁世飞教授</span>（CCF 杰出会员、CAAI Fellow、CAAI心智计算专委会副主任）。
                     </p>
                     <p>
                         主要研究方向包括多模态学习、AI For Medicine、随机神经网络、群体智能优化等。主持中国博士后科学基金面上项目、国家重点实验室开放课题多项。出版英文学术专著1部，在 IEEE T-SMC、IEEE T-FS、IEEE T-ETCI、IEEE T-NNLS、IEEE T-CE、IEEE IoTJ、ICLR、Pattern Recognition、Information Sciences、Knowledge-Based Systems、计算机学报、软件学报等国内外重要期刊、会议发表学术论文40余篇。
                     </p>
-                    <div class="bg-cyan-950/40 p-5 rounded-lg border border-cyan-800/50 text-cyan-100 font-medium flex items-start gap-4 mt-6 relative overflow-hidden shadow-[inset_0_0_20px_rgba(6,182,212,0.1)]">
+                    <div class="bg-cyan-950/40 p-4 md:p-5 rounded-lg border border-cyan-800/50 text-cyan-100 font-medium flex items-start gap-3 md:gap-4 mt-4 md:mt-6 relative overflow-hidden shadow-[inset_0_0_20px_rgba(6,182,212,0.1)]">
                         <div class="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-cyan-400 to-emerald-500 shadow-[0_0_15px_#06b6d4]"></div>
-                        <i class="fas fa-handshake text-cyan-400 text-2xl mt-1 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"></i> 
-                        <p class="m-0 leading-relaxed text-[15px]">与香港中文大学、香港中文大学（深圳）、澳门大学、中国科学技术大学、哈尔滨工业大学、中国矿业大学等保持长期合作。<strong>欢迎对本人研究方向感兴趣的同学合作交流！</strong></p>
+                        <i class="fas fa-handshake text-cyan-400 text-xl md:text-2xl mt-1 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"></i> 
+                        <p class="m-0 leading-relaxed text-[14px] md:text-[15px]">与香港中文大学、香港中文大学（深圳）、澳门大学、中国科学技术大学、哈尔滨工业大学、中国矿业大学等保持长期合作。<strong>欢迎对本人研究方向感兴趣的同学合作交流！</strong></p>
                     </div>
                 </div>
             </section>
 
             <!-- 最新动态 News -->
             <section id="news" class="section-card">
-                <h2 class="section-title">
+                <h2 class="section-title flex-wrap gap-y-2">
                     <span class="flex items-center">
                         <span class="neural-icon-cluster">
                             <span class="neural-node-small-1"></span>
@@ -329,28 +348,28 @@
                         </span>
                         最新动态 (News)
                     </span>
-                  </h2>
-                <!-- 修复了高度，增加了消隐特效 mask-fade-y 确保完美触发滚动 -->
-                <div class="scroll-box h-[180px] pr-2 mask-fade-y">
-                    <div class="news-item flex flex-col md:flex-row md:gap-6 border-b border-slate-700/50 border-dashed py-4 group hover:pl-2 transition-all">
-                        <span class="text-cyan-400 font-bold min-w-[95px] font-mono text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2025.03.17</span>
-                        <p class="text-slate-300 m-0 text-[15px] group-hover:text-white transition">当选 <strong>中国人工智能学会青年工作委员会 (CAAI 青工委) 委员</strong>。</p>
+                                </h2>
+                <!-- 带有视觉消隐特效的滚动列表 -->
+                <div class="scroll-box h-[180px] md:h-[220px] pr-2 mask-fade-y">
+                    <div class="news-item flex flex-col md:flex-row md:gap-4 border-b border-slate-700/50 border-dashed py-3 group hover:pl-2 transition-all">
+                        <span class="text-cyan-400 font-bold min-w-[90px] font-mono text-[13px] md:text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2025.03.17</span>
+                        <p class="text-slate-300 m-0 text-[14px] md:text-[15px] group-hover:text-white transition">当选 <strong>中国人工智能学会青年工作委员会 (CAAI 青工委) 委员</strong>。</p>
                     </div>
-                    <div class="news-item flex flex-col md:flex-row md:gap-6 border-b border-slate-700/50 border-dashed py-4 group hover:pl-2 transition-all">
-                        <span class="text-cyan-400 font-bold min-w-[95px] font-mono text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2025.03.11</span>
-                        <p class="text-slate-300 m-0 text-[15px] group-hover:text-white transition">论文“面向脉搏波信号分类的可信增量集成学习”被计算机科学领域中文Top 1期刊 <strong>《计算机学报》</strong> 录用。</p>
+                    <div class="news-item flex flex-col md:flex-row md:gap-4 border-b border-slate-700/50 border-dashed py-3 group hover:pl-2 transition-all">
+                        <span class="text-cyan-400 font-bold min-w-[90px] font-mono text-[13px] md:text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2025.03.11</span>
+                        <p class="text-slate-300 m-0 text-[14px] md:text-[15px] group-hover:text-white transition">论文“面向脉搏波信号分类的可信增量集成学习”被计算机科学领域中文Top 1期刊 <strong>《计算机学报》</strong> 录用。</p>
                     </div>
-                    <div class="news-item flex flex-col md:flex-row md:gap-6 border-b border-slate-700/50 border-dashed py-4 group hover:pl-2 transition-all">
-                        <span class="text-cyan-400 font-bold min-w-[95px] font-mono text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2026.01.10</span>
-                        <p class="text-slate-300 m-0 text-[15px] group-hover:text-white transition">受邀成为 <em class="text-emerald-300">Information Processing in Agriculture</em> (《中国科技期刊卓越行动计划》高起点新刊项目、SCI一区 Top) <strong>副主编</strong>。</p>
+                    <div class="news-item flex flex-col md:flex-row md:gap-4 border-b border-slate-700/50 border-dashed py-3 group hover:pl-2 transition-all">
+                        <span class="text-cyan-400 font-bold min-w-[90px] font-mono text-[13px] md:text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2026.01.10</span>
+                        <p class="text-slate-300 m-0 text-[14px] md:text-[15px] group-hover:text-white transition">受邀成为 <em class="text-emerald-300">Information Processing in Agriculture</em> (《中国科技期刊卓越行动计划》高起点新刊项目、SCI一区 Top) <strong>副主编</strong>。</p>
                     </div>
-                    <div class="news-item flex flex-col md:flex-row md:gap-6 border-b border-slate-700/50 border-dashed py-4 group hover:pl-2 transition-all">
-                        <span class="text-cyan-400 font-bold min-w-[95px] font-mono text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2025.12.05</span>
-                        <p class="text-slate-300 m-0 text-[15px] group-hover:text-white transition">参加中国情感智能大会，并当选为 CSIG 情感计算与理解专委会委员。</p>
+                    <div class="news-item flex flex-col md:flex-row md:gap-4 border-b border-slate-700/50 border-dashed py-3 group hover:pl-2 transition-all">
+                        <span class="text-cyan-400 font-bold min-w-[90px] font-mono text-[13px] md:text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2025.12.05</span>
+                        <p class="text-slate-300 m-0 text-[14px] md:text-[15px] group-hover:text-white transition">参加中国情感智能大会，并当选为 CSIG 情感计算与理解专委会委员。</p>
                     </div>
-                    <div class="news-item flex flex-col md:flex-row md:gap-6 py-4 group hover:pl-2 transition-all">
-                        <span class="text-cyan-400 font-bold min-w-[95px] font-mono text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2025.12.04</span>
-                        <p class="text-slate-300 m-0 text-[15px] group-hover:text-white transition">受邀于广州中医药大学作“基于随机配置理论的深度神经网络模型研究进展”报告。</p>
+                    <div class="news-item flex flex-col md:flex-row md:gap-4 py-3 group hover:pl-2 transition-all">
+                        <span class="text-cyan-400 font-bold min-w-[90px] font-mono text-[13px] md:text-[14px] mt-0.5 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2025.12.04</span>
+                        <p class="text-slate-300 m-0 text-[14px] md:text-[15px] group-hover:text-white transition">受邀于广州中医药大学作“基于随机配置理论的深度神经网络模型研究进展”报告。</p>
                     </div>
                 </div>
             </section>
@@ -368,89 +387,89 @@
                     </span>
                 </h2>
                 <!-- 同样增加了视觉消隐特效 -->
-                <div class="scroll-box max-h-[500px] pr-2 mask-fade-y-long">
+                <div class="scroll-box max-h-[450px] md:max-h-[600px] pr-2 mask-fade-y-long">
                     
                     <!-- 学术专著 -->
-                    <h3 class="text-[15px] font-bold text-white mt-2 mb-4 flex items-center gap-2 border-l-[3px] border-emerald-400 pl-3">
+                    <h3 class="text-[14px] md:text-[15px] font-bold text-white mt-2 mb-3 md:mb-4 flex items-center gap-2 border-l-[3px] border-emerald-400 pl-2 md:pl-3">
                         <i class="fas fa-book text-emerald-400"></i> 学术专著
                     </h3>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>Zhang C</strong>, Ding S, Wang Y, Zhang D. Advanced Randomized Neural Networks for Pattern Analysis [M]. <strong>World Scientific Publishing Co. Pte Ltd</strong>, 2025. 
                         <span class="tag-badge tag-book">[学术专著]</span>
                     </div>
 
                     <!-- 国内期刊论文 -->
-                    <h3 class="text-[15px] font-bold text-white mt-8 mb-4 flex items-center gap-2 border-l-[3px] border-cyan-400 pl-3">
+                    <h3 class="text-[14px] md:text-[15px] font-bold text-white mt-6 md:mt-8 mb-3 md:mb-4 flex items-center gap-2 border-l-[3px] border-cyan-400 pl-2 md:pl-3">
                         <i class="fas fa-file-code text-cyan-400"></i> 国内期刊论文
                     </h3>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>张成龙</strong>, 张大鹏, 戴世成, 李锦兴, 丁世飞. 面向脉搏波信号分类的可信增量集成学习 [J]. <strong>计算机学报</strong>. 
-                        <span class="bg-red-500/20 text-red-400 border border-red-500/50 text-[11px] px-2 py-0.5 rounded font-mono shadow-[0_0_8px_rgba(239,68,68,0.4)] ml-1"> 录用</span> 
+                        <span class="bg-red-500/20 text-red-400 border border-red-500/50 text-[10px] md:text-[11px] px-1.5 md:px-2 py-0.5 rounded font-mono shadow-[0_0_8px_rgba(239,68,68,0.4)] ml-1"> 录用</span> 
                         <span class="tag-badge tag-ccf">[CCF T1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>张成龙</strong>, 丁世飞, 郭丽丽, 等. 随机配置网络研究进展 [J]. <strong>软件学报</strong>, 2024, 35(5): 2379-2399. 
                         <span class="tag-badge tag-ccf">[CCF T1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         丁世飞, <strong>张成龙*</strong>, 郭丽丽, 张健*, 等. 基于M-estimator函数的加权深度随机配置网络 [J]. <strong>计算机学报</strong>, 2023, 46(11): 2476-2487. 
                         <span class="tag-badge tag-ccf">[CCF T1]</span>
                     </div>
 
                     <!-- 国际期刊论文 -->
-                    <h3 class="text-[15px] font-bold text-white mt-8 mb-4 flex items-center gap-2 border-l-[3px] border-cyan-400 pl-3">
+                    <h3 class="text-[14px] md:text-[15px] font-bold text-white mt-6 md:mt-8 mb-3 md:mb-4 flex items-center gap-2 border-l-[3px] border-cyan-400 pl-2 md:pl-3">
                         <i class="fas fa-globe-americas text-cyan-400"></i> 国际期刊论文
                     </h3>
                     
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>Zhang C</strong>, Cheng D, Xue J, Wu F, Zhang D. Deep Ensemble Stochastic Configuration Network Via Graph Intuitionistic Fuzzy for Depression Recognition [J]. <strong>IEEE Transactions on Fuzzy Systems</strong>, 2025, 33(9): 2937-2949. 
                         <span class="tag-badge tag-jcr">[JCR Q1, CCF B]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>Zhang C</strong>, Guo C, Wu F, Zhang D. Robust Decorrelated Stochastic Configuration Network Ensemble Via Weighted Negative Correlation Learning [J]. <strong>IEEE Transactions on Systems, Man, and Cybernetics: Systems</strong>, 2025, 55(10): 6767-6776. 
                         <span class="tag-badge tag-jcr">[JCR Q1, CCF B]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>Zhang C</strong>, Zhang Z, Wang Y, Zhou P, Zhang D. Noise Robust Evolving Hierarchical Stochastic Configuration Architecture With Multi-Level Sparse Representation [J]. <strong>IEEE Transactions on Emerging Topics in Computational Intelligence</strong>, 2026. 
                         <span class="tag-badge tag-jcr">[JCR Q1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         Ding S, <strong>Zhang C*</strong>, Zhang J*, et al. Incremental Multi-Layer Broad Learning System With Stochastic Configuration Algorithm for Regression [J]. <strong>IEEE Transactions on Cognitive and Developmental Systems</strong>, 2023, 15(2): 877-886. 
                         <span class="tag-badge tag-jcr">[JCR Q1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>Zhang C</strong>, Wang Y, Zhang D. Greedy Deep Stochastic Configuration Networks Ensemble With Boosting Negative Correlation Learning [J]. <strong>Information Sciences</strong>, 2024, 680: 121140. 
                         <span class="tag-badge tag-jcr">[JCR Q1, CCF B]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>Zhang C</strong>, Ding S, Du W. Broad Stochastic Configuration Network for Regression [J]. <strong>Knowledge-Based Systems</strong>, 2022, 243: 108403. 
                         <span class="tag-badge tag-jcr">[JCR Q1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>Zhang C</strong>, Ding S. A Stochastic Configuration Network Based on Chaotic Sparrow Search Algorithm [J]. <strong>Knowledge-Based Systems</strong>, 2021, 220: 106924. 
                         <span class="tag-badge tag-esi">[ESI 热点/高被引]</span> <span class="tag-badge tag-jcr">[JCR Q1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>Zhang C</strong>, Ding S, Zhang J, et al. Parallel Stochastic Configuration Networks for Large-Scale Data Regression [J]. <strong>Applied Soft Computing</strong>, 2021, 103: 107143.
                         <span class="tag-badge tag-jcr">[JCR Q1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         <strong>Zhang C</strong>, Ding S, Sun Y, et al. An Optimized Support Vector Regression for Prediction of Bearing Degradation [J]. <strong>Applied Soft Computing</strong>, 2021, 113: 108008.
                         <span class="tag-badge tag-jcr">[JCR Q1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         Xue J*, <strong>Zhang C*</strong>, Wang M, et al. MOSSA: An Efficient Swarm Intelligent Algorithm to Solve Global Optimization and Carbon Fiber Drawing Process Problems [J]. <strong>IEEE Internet of Things Journal</strong>, 2025, 12(9): 11940-11953. 
                         <span class="tag-badge tag-jcr">[JCR Q1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         Hu J, Zhu L, Yang M, Tang B, Dai S*, <strong>Zhang C*</strong>. GAAC: A Robust Misinformation Detection Framework Via Graph Attention and Adaptive Contrastive Learning [J]. <strong>Knowledge-Based Systems</strong>, 2026, 115664. 
                         <span class="tag-badge tag-jcr">[JCR Q1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         Wang Y*, Liu G, <strong>Zhang C*</strong>, et al. Sparse Low-Rank Retargeted Stochastic Configuration Networks for Multiclass Classification [J]. <strong>Expert Systems with Applications</strong>, 2026, 296: 128652. 
                         <span class="tag-badge tag-jcr">[JCR Q1]</span>
                     </div>
-                    <div class="list-item-hover text-slate-300 text-[14.5px] leading-relaxed">
+                    <div class="list-item-hover text-slate-300 text-[13.5px] md:text-[14.5px] leading-relaxed">
                         Ding S, Zhang Z*, <strong>Zhang C*</strong>, et al. Semi-Supervised Classification Model With Stochastic Configuration Networks [J]. <strong>Knowledge and Information Systems</strong>, 2025, 67: 10427–10449. 
                         <span class="tag-badge" style="background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.4);">[JCR Q2, CCF B]</span>
                     </div>
@@ -464,35 +483,35 @@
             <!-- 合作导师 -->
             <section class="section-card relative overflow-hidden">
                 <div class="absolute -right-10 -top-10 text-cyan-900/30 transform rotate-12 z-0 blur-sm pointer-events-none">
-                    <i class="fas fa-network-wired" style="font-size: 14rem;"></i>
+                    <i class="fas fa-network-wired" style="font-size: 10rem;"></i>
                 </div>
-                <h3 class="font-extrabold text-white text-[16px] mb-5 pb-3 border-b border-cyan-900/50 flex items-center gap-2 relative z-10">
-                    <span class="neural-icon-cluster" style="width: 28px; height: 28px; margin-right: 8px;">
-                        <span class="neural-node-main" style="width: 22px; height: 22px; font-size: 0.7rem;"><i class="fas fa-user-tie"></i></span>
+                <h3 class="font-extrabold text-white text-[15px] md:text-[16px] mb-4 md:mb-5 pb-2.5 md:pb-3 border-b border-cyan-900/50 flex items-center gap-2 relative z-10">
+                    <span class="neural-icon-cluster" style="width: 24px; height: 24px; margin-right: 8px;">
+                        <span class="neural-node-main" style="width: 18px; height: 18px; font-size: 0.6rem;"><i class="fas fa-user-tie"></i></span>
                     </span> 
                     合作导师
                 </h3>
-                <div class="space-y-4 relative z-10">
-                    <div class="flex gap-4 items-center group bg-slate-900/60 p-3.5 rounded-xl border border-slate-700/50 hover:border-cyan-500/50 transition duration-300 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)]">
-                        <div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-cyan-900 to-slate-800 border border-cyan-700/50 rounded-lg flex items-center justify-center font-black text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.2)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition duration-300">ZD</div>
+                <div class="space-y-3 md:space-y-4 relative z-10">
+                    <div class="flex gap-3 md:gap-4 items-center group bg-slate-900/60 p-3 md:p-3.5 rounded-xl border border-slate-700/50 hover:border-cyan-500/50 transition duration-300 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)]">
+                        <div class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 bg-gradient-to-br from-cyan-900 to-slate-800 border border-cyan-700/50 rounded-lg flex items-center justify-center font-black text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.2)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition duration-300 text-sm md:text-base">ZD</div>
                         <div>
-                            <div class="flex flex-wrap items-center gap-2 mb-1">
-                                <span class="font-bold text-[15px] text-white tracking-wide">张大鹏 教授</span>
-                                <span class="bg-amber-500/20 border border-amber-500/50 text-amber-400 text-[10px] px-2 py-0.5 rounded font-mono shadow-[0_0_8px_rgba(245,158,11,0.3)]">加拿大两院院士</span>
+                            <div class="flex flex-wrap items-center gap-1.5 md:gap-2 mb-1">
+                                <span class="font-bold text-[14px] md:text-[15px] text-white tracking-wide">张大鹏教授</span>
+                                <span class="bg-amber-500/20 border border-amber-500/50 text-amber-400 text-[9px] md:text-[10px] px-1.5 md:px-2 py-0.5 rounded font-mono shadow-[0_0_8px_rgba(245,158,11,0.3)] whitespace-nowrap">加拿大两院院士</span>
                             </div>
-                            <div class="text-[12px] text-slate-400 leading-snug font-mono">
+                            <div class="text-[11px] md:text-[12px] text-slate-400 leading-snug font-mono">
                                 加拿大皇家科学院院士 · 加拿大工程院院士 · IEEE Life Fellow
                             </div>
                         </div>
                     </div>
-                    <div class="flex gap-4 items-center group bg-slate-900/60 p-3.5 rounded-xl border border-slate-700/50 hover:border-cyan-500/50 transition duration-300 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)]">
-                        <div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-cyan-900 to-slate-800 border border-cyan-700/50 rounded-lg flex items-center justify-center font-black text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.2)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition duration-300">WF</div>
+                    <div class="flex gap-3 md:gap-4 items-center group bg-slate-900/60 p-3 md:p-3.5 rounded-xl border border-slate-700/50 hover:border-cyan-500/50 transition duration-300 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)]">
+                        <div class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 bg-gradient-to-br from-cyan-900 to-slate-800 border border-cyan-700/50 rounded-lg flex items-center justify-center font-black text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.2)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition duration-300 text-sm md:text-base">WF</div>
                         <div>
-                            <div class="flex flex-wrap items-center gap-2 mb-1">
-                                <span class="font-bold text-[15px] text-white tracking-wide">吴 枫 教授</span>
-                                <span class="bg-amber-500/20 border border-amber-500/50 text-amber-400 text-[10px] px-2 py-0.5 rounded font-mono shadow-[0_0_8px_rgba(245,158,11,0.3)]">中国工程院院士</span>
+                            <div class="flex flex-wrap items-center gap-1.5 md:gap-2 mb-1">
+                                <span class="font-bold text-[14px] md:text-[15px] text-white tracking-wide">吴 枫 教授</span>
+                                <span class="bg-amber-500/20 border border-amber-500/50 text-amber-400 text-[9px] md:text-[10px] px-1.5 md:px-2 py-0.5 rounded font-mono shadow-[0_0_8px_rgba(245,158,11,0.3)] whitespace-nowrap">中国工程院院士</span>
                             </div>
-                            <div class="text-[12px] text-slate-400 leading-snug font-mono">
+                            <div class="text-[11px] md:text-[12px] text-slate-400 leading-snug font-mono">
                                 中国工程院院士 · 中国科学技术大学副校长 · IEEE Fellow
                             </div>
                         </div>
@@ -502,39 +521,39 @@
 
             <!-- 学术任职 -->
             <section class="section-card">
-                <h3 class="font-extrabold text-white text-[16px] mb-5 pb-3 border-b border-cyan-900/50 flex items-center gap-2">
-                    <span class="neural-icon-cluster" style="width: 28px; height: 28px; margin-right: 8px;">
-                        <span class="neural-node-main" style="width: 22px; height: 22px; font-size: 0.7rem;"><i class="fas fa-award"></i></span>
+                <h3 class="font-extrabold text-white text-[15px] md:text-[16px] mb-4 md:mb-5 pb-2.5 md:pb-3 border-b border-cyan-900/50 flex items-center gap-2">
+                    <span class="neural-icon-cluster" style="width: 24px; height: 24px; margin-right: 8px;">
+                        <span class="neural-node-main" style="width: 18px; height: 18px; font-size: 0.6rem;"><i class="fas fa-award"></i></span>
                     </span>
                     学术任职
                 </h3>
-                <ul class="text-[14px] space-y-3.5 text-slate-300 leading-snug font-mono">
-                    <li class="flex items-start gap-3 group">
-                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
+                <ul class="text-[13px] md:text-[14px] space-y-3 md:space-y-3.5 text-slate-300 leading-snug font-mono">
+                    <li class="flex items-start gap-2.5 md:gap-3 group">
+                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-[10px] md:text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
                         <span class="group-hover:text-cyan-200 transition">深圳市龙岗区驻区高校特聘人才</span>
                     </li> 
-                    <li class="flex items-start gap-3 group">
-                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
-                        <span class="group-hover:text-cyan-200 transition"><em class="text-emerald-300">Information Processing in Agriculture</em> 副主编</span>
+                    <li class="flex items-start gap-2.5 md:gap-3 group">
+                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-[10px] md:text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
+                        <span class="group-hover:text-cyan-200 transition"><em class="text-emerald-300 not-italic md:italic">Information Processing in Agriculture</em> 副主编</span>
                     </li>
-                    <li class="flex items-start gap-3 group">
-                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
+                    <li class="flex items-start gap-2.5 md:gap-3 group">
+                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-[10px] md:text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
                         <span class="group-hover:text-cyan-200 transition">CAAI 青年工作委员会 委员</span>
                     </li>
-                    <li class="flex items-start gap-3 group">
-                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
+                    <li class="flex items-start gap-2.5 md:gap-3 group">
+                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-[10px] md:text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
                         <span class="group-hover:text-cyan-200 transition">CAAI 粒计算与知识发现专委会委员</span>
                     </li>
-                    <li class="flex items-start gap-3 group">
-                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
+                    <li class="flex items-start gap-2.5 md:gap-3 group">
+                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-[10px] md:text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
                         <span class="group-hover:text-cyan-200 transition">CAAI 知识工程与分布智能专委会青年委员</span>
                     </li>
-                    <li class="flex items-start gap-3 group">
-                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
+                    <li class="flex items-start gap-2.5 md:gap-3 group">
+                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-[10px] md:text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
                         <span class="group-hover:text-cyan-200 transition">CSIG 情感计算与理解专委会委员</span>
                     </li>
-                    <li class="flex items-start gap-3 group">
-                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
+                    <li class="flex items-start gap-2.5 md:gap-3 group">
+                        <i class="fas fa-chevron-right text-cyan-500 mt-1 text-[10px] md:text-xs group-hover:text-emerald-400 transition drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"></i> 
                         <span class="group-hover:text-cyan-200 transition">《山东科技大学（自然科学版）》青年编委</span>
                     </li>
                 </ul>
@@ -542,32 +561,32 @@
 
             <!-- 带有突触网络的时间轴：工作经历 -->
             <section class="section-card">
-                <h3 class="font-extrabold text-white text-[16px] mb-4 pb-3 border-b border-cyan-900/50 flex items-center gap-2">
-                    <span class="neural-icon-cluster" style="width: 28px; height: 28px; margin-right: 8px;">
-                        <span class="neural-node-main" style="width: 22px; height: 22px; font-size: 0.7rem;"><i class="fas fa-briefcase"></i></span>
+                <h3 class="font-extrabold text-white text-[15px] md:text-[16px] mb-4 md:mb-5 pb-2.5 md:pb-3 border-b border-cyan-900/50 flex items-center gap-2">
+                    <span class="neural-icon-cluster" style="width: 24px; height: 24px; margin-right: 8px;">
+                        <span class="neural-node-main" style="width: 18px; height: 18px; font-size: 0.6rem;"><i class="fas fa-briefcase"></i></span>
                     </span>
                     工作经历
                 </h3>
                 <div class="nn-timeline-container">
-                    <div class="nn-layer">
+                    <div class="nn-layer pb-5 md:pb-6">
                         <div class="nn-node-cluster">
                             <div class="nn-node"></div>
                             <div class="nn-node" style="opacity: 0.5;"></div>
                         </div>
-                        <div class="text-[12px] font-mono text-cyan-400 mb-1 tracking-widest drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2023.10 - 至今</div>
-                        <div class="text-[15px] font-extrabold text-white">香港中文大学 (深圳)</div>
-                        <div class="text-[13px] text-slate-400 mt-1 flex items-center gap-2">
-                            <i class="fas fa-server text-cyan-700 text-xs"></i> 数据科学学院 · 博士后
+                        <div class="text-[11px] md:text-[12px] font-mono text-cyan-400 mb-0.5 md:mb-1 tracking-widest drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">2023.10 - 至今</div>
+                        <div class="text-[14px] md:text-[15px] font-extrabold text-white">香港中文大学 (深圳)</div>
+                        <div class="text-[12px] md:text-[13px] text-slate-400 mt-0.5 md:mt-1 flex items-center gap-2">
+                            <i class="fas fa-server text-cyan-700 text-[10px] md:text-xs"></i> 数据科学学院 · 博士后
                         </div>
                     </div>
-                    <div class="nn-layer">
+                    <div class="nn-layer pb-0">
                         <div class="nn-node-cluster">
                             <div class="nn-node"></div>
                         </div>
-                        <div class="text-[12px] font-mono text-cyan-600 mb-1 tracking-widest">2023.09 - 至今</div>
-                        <div class="text-[15px] font-extrabold text-white">中国科学技术大学</div>
-                        <div class="text-[13px] text-slate-400 mt-1 flex items-center gap-2">
-                            <i class="fas fa-server text-cyan-700 text-xs"></i> 信息科学技术学院 · 博士后
+                        <div class="text-[11px] md:text-[12px] font-mono text-cyan-600 mb-0.5 md:mb-1 tracking-widest">2023.09 - 至今</div>
+                        <div class="text-[14px] md:text-[15px] font-extrabold text-white">中国科学技术大学</div>
+                        <div class="text-[12px] md:text-[13px] text-slate-400 mt-0.5 md:mt-1 flex items-center gap-2">
+                            <i class="fas fa-server text-cyan-700 text-[10px] md:text-xs"></i> 信息科学技术学院 · 博士后
                         </div>
                     </div>
                 </div>
@@ -575,44 +594,44 @@
 
             <!-- 带有突触网络的时间轴：教育经历 -->
             <section class="section-card">
-                <h3 class="font-extrabold text-white text-[16px] mb-4 pb-3 border-b border-cyan-900/50 flex items-center gap-2">
-                    <span class="neural-icon-cluster" style="width: 28px; height: 28px; margin-right: 8px;">
-                        <span class="neural-node-main" style="width: 22px; height: 22px; font-size: 0.7rem;"><i class="fas fa-graduation-cap"></i></span>
+                <h3 class="font-extrabold text-white text-[15px] md:text-[16px] mb-4 md:mb-5 pb-2.5 md:pb-3 border-b border-cyan-900/50 flex items-center gap-2">
+                    <span class="neural-icon-cluster" style="width: 24px; height: 24px; margin-right: 8px;">
+                        <span class="neural-node-main" style="width: 18px; height: 18px; font-size: 0.6rem;"><i class="fas fa-graduation-cap"></i></span>
                     </span>
                     教育经历
                 </h3>
                 <div class="nn-timeline-container">
-                    <div class="nn-layer">
+                    <div class="nn-layer pb-5 md:pb-6">
                         <div class="nn-node-cluster">
                             <div class="nn-node medical"></div>
                             <div class="nn-node medical" style="opacity: 0.5;"></div>
                             <div class="nn-node medical" style="opacity: 0.2;"></div>
                         </div>
-                        <div class="text-[12px] font-mono text-emerald-400 tracking-widest drop-shadow-[0_0_5px_rgba(16,185,129,0.5)]">2019 - 2023</div>
-                        <div class="text-[15px] font-extrabold text-white mt-1">中国矿业大学</div>
-                        <div class="text-[13px] text-slate-400 mt-1 flex items-center gap-2">
-                            <i class="fas fa-microchip text-emerald-700 text-xs"></i> 计算机科学与技术 · 博士
+                        <div class="text-[11px] md:text-[12px] font-mono text-emerald-400 tracking-widest drop-shadow-[0_0_5px_rgba(16,185,129,0.5)]">2019 - 2023</div>
+                        <div class="text-[14px] md:text-[15px] font-extrabold text-white mt-0.5 md:mt-1">中国矿业大学</div>
+                        <div class="text-[12px] md:text-[13px] text-slate-400 mt-0.5 md:mt-1 flex items-center gap-2">
+                            <i class="fas fa-microchip text-emerald-700 text-[10px] md:text-xs"></i> 计算机科学与技术 · 博士
                         </div>
                     </div>
-                    <div class="nn-layer">
+                    <div class="nn-layer pb-5 md:pb-6">
                         <div class="nn-node-cluster">
                             <div class="nn-node medical"></div>
                             <div class="nn-node medical" style="opacity: 0.5;"></div>
                         </div>
-                        <div class="text-[12px] font-mono text-emerald-600 tracking-widest">2014 - 2017</div>
-                        <div class="text-[15px] font-extrabold text-white mt-1">贵州大学</div>
-                        <div class="text-[13px] text-slate-400 mt-1 flex items-center gap-2">
-                            <i class="fas fa-network-wired text-emerald-700 text-xs"></i> 通信与信息系统 · 硕士
+                        <div class="text-[11px] md:text-[12px] font-mono text-emerald-600 tracking-widest">2014 - 2017</div>
+                        <div class="text-[14px] md:text-[15px] font-extrabold text-white mt-0.5 md:mt-1">贵州大学</div>
+                        <div class="text-[12px] md:text-[13px] text-slate-400 mt-0.5 md:mt-1 flex items-center gap-2">
+                            <i class="fas fa-network-wired text-emerald-700 text-[10px] md:text-xs"></i> 通信与信息系统 · 硕士
                         </div>
                     </div>
-                    <div class="nn-layer">
+                    <div class="nn-layer pb-0">
                         <div class="nn-node-cluster">
                             <div class="nn-node" style="border-color:#475569; box-shadow:none;"></div>
                         </div>
-                        <div class="text-[12px] font-mono text-slate-500 tracking-widest">2010 - 2014</div>
-                        <div class="text-[15px] font-extrabold text-slate-300 mt-1">曲阜师范大学</div>
-                        <div class="text-[13px] text-slate-500 mt-1 flex items-center gap-2">
-                            <i class="fas fa-wave-square text-slate-600 text-xs"></i> 电子信息科学与技术 · 本科
+                        <div class="text-[11px] md:text-[12px] font-mono text-slate-500 tracking-widest">2010 - 2014</div>
+                        <div class="text-[14px] md:text-[15px] font-extrabold text-slate-300 mt-0.5 md:mt-1">曲阜师范大学</div>
+                        <div class="text-[12px] md:text-[13px] text-slate-500 mt-0.5 md:mt-1 flex items-center gap-2">
+                            <i class="fas fa-wave-square text-slate-600 text-[10px] md:text-xs"></i> 电子信息科学与技术 · 本科
                         </div>
                     </div>
                 </div>
@@ -622,12 +641,12 @@
     </main>
 
     <!-- 赛博终端底栏 -->
-    <footer class="border-t border-cyan-900/50 mt-10 py-10 text-center bg-[#020617] relative overflow-hidden">
+    <footer class="border-t border-cyan-900/50 mt-6 md:mt-10 py-8 md:py-10 text-center bg-[#020617] relative overflow-hidden">
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-[2px] bg-cyan-500 shadow-[0_0_20px_#06b6d4]"></div>
         <div class="max-w-4xl mx-auto px-4 relative z-10">
-            <p class="text-[14px] text-slate-400 font-mono">© 2026 张成龙 · Chenglong Zhang. All Rights Reserved.</p>
-            <p class="text-[11px] text-cyan-600 mt-2 font-mono flex items-center justify-center gap-2">
-            </p>
+            <p class="text-[12px] md:text-[14px] text-slate-400 font-mono">© 2026 张成龙 · Chenglong Zhang · Academic_Homepage_v3.0. All Rights Reserved.</p>
+            <p class="text-[10px] md:text-[11px] text-cyan-600 mt-1 md:mt-2 font-mono flex items-center justify-center gap-1 md:gap-2">
+                          </p>
         </div>
     </footer>
 
