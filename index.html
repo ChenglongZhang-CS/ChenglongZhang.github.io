@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>张成龙 (Chenglong Zhang) - 学术主页</title>
+
+    <!-- 引入 Tailwind CSS 和 FontAwesome 图标库 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Noto Sans SC', sans-serif; 
+            background-color: #f4f7f9; 
+            color: #1e293b; 
+            line-height: 1.7; 
+        }
+
+        /* 顶部高定学术蓝渐变背景 */
+        .hero-bg {
+            background: linear-gradient(135deg, #09203f 0%, #153c6b 50%, #1e4f8a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png') opacity-10;
+            pointer-events: none;
+        }
+
+        /* 玻璃拟态卡片 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* 主体内容白底卡片 */
+        .section-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .section-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+        }
+
+        /* 标题样式优化 */
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #f1f5f9;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 40px;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        /* 滚动区域及自定义高级滚动条 */
+        .scroll-box {
+            overflow-y: auto;
+            padding-right: 12px;
+            background: #fcfcfd;
+            border-radius: 0.5rem;
+            border: 1px solid #f1f5f9;
+        }
+        .scroll-box::-webkit-scrollbar { width: 6px; }
+        .scroll-box::-webkit-scrollbar-track { background: #f8fafc; border-radius: 8px; }
+        .scroll-box::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .scroll-box::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* 院士/标签高亮徽章 */
+        .badge-academician {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(217, 119, 6, 0.3);
+        }
+
+        /* 列表项悬浮动效 */
+        .list-item-hover {
+            padding: 10px 12px;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+            margin-bottom: 4px;
+        }
+        .list-item-hover:hover { 
+            background: #f8fafc; 
+            border-left-color: #3b82f6;
+            transform: translateX(4px);
+        }
+
+        .pub-item { font-size: 0.9rem; line-height: 1.6; }
+        .news-item { font-size: 0.9rem; border-bottom: 1px dashed #e2e8f0; padding: 12px 0;}
+        .news-item:last-child { border-bottom: none; }
+        
+        .anchor-offset { scroll-margin-top: 80px; }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- 顶部全宽横幅 (Hero Section) -->
+    <header class="hero-bg pt-24 pb-16 px-6 text-white">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <!-- 左侧核心身份信息 -->
+            <div class="lg:col-span-7 space-y-5 z-10">
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight drop-shadow-lg">张成龙 <span class="text-2xl font-medium text-blue-200 ml-2">Chenglong Zhang</span></h1>
+                <p class="text-blue-100 font-medium text-lg tracking-wide border-l-4 border-blue-400 pl-3">
+                    多模态学习 | AI For Medicine | 随机配置网络 | 群体智能优化
+                </p>
+                <div class="text-blue-50/90 text-sm md:text-base leading-relaxed bg-black/10 inline-block p-4 rounded-xl border border-white/10 backdrop-blur-sm">
+                    <p class="flex items-center gap-2 mb-1"><i class="fas fa-university w-4 text-blue-300"></i> 博士后研究员 · 香港中文大学 (深圳) & 中国科学技术大学</p>
+                    <p class="flex items-center gap-2 mb-1"><i class="fas fa-envelope w-4 text-blue-300"></i> zhangchl@cuhk.edu.cn | zhangchl@ustc.edu.cn</p>
+                    <p class="flex items-center gap-2"><i class="fas fa-map-marker-alt w-4 text-blue-300"></i> 广东 深圳 / 安徽 合肥</p>
+                </div>
+                <div class="pt-2">
+                    <a href="https://scholar.google.com/citations?user=hLYl49wAAAAJ" target="_blank" class="inline-flex items-center bg-white text-[#0f172a] hover:bg-blue-50 px-6 py-2.5 rounded-full font-bold text-sm transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        <i class="fas fa-graduation-cap mr-2 text-blue-600"></i> Google Scholar
+                    </a>
+                </div>
+            </div>
+
+            <!-- 右侧合作导师荣誉墙 -->
+            <div class="lg:col-span-5 z-10">
+                <div class="glass-card p-6">
+                    <h3 class="text-blue-200 text-xs font-black uppercase tracking-widest mb-4 border-b border-white/20 pb-2 flex items-center gap-2">
+                        <i class="fas fa-users"></i> 合作导师 / Supervisors
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-center group">
+                            <div class="w-12 h-12 bg-white/10 border border-white/20 rounded-full flex items-center justify-center font-black text-blue-100 shadow-inner group-hover:bg-white/20 transition">ZD</div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="font-bold text-base tracking-wide">张大鹏 教授</span>
+                                    <span class="badge-academician">加拿大两院院士</span>
+                                </div>
+                                <div class="text-[11px] text-blue-200/80 leading-snug">
+                                    加拿大皇家科学院院士 · 加拿大工程院院士 · IEEE Life Fellow
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-center border-t border-white/10 pt-4 group">
+                            <div class="w-12 h-12 bg-white/10 border border-white/20 rounded-full flex items-center justify-center font-black text-blue-100 shadow-inner group-hover:bg-white/20 transition">WF</div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="font-bold text-base tracking-wide">吴 枫 教授</span>
+                                    <span class="badge-academician">中国工程院院士</span>
+                                </div>
+                                <div class="text-[11px] text-blue-200/80 leading-snug">
+                                    中国工程院院士 ·  中国科学技术大学副校长 · IEEE Fellow
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体内容网格布局 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 lg:grid-cols-12 gap-8 relative -mt-8">
+        
+        <!-- 左侧核心区 (占据 8 列) -->
+        <div class="lg:col-span-8 space-y-6">
+            
+            <!-- 个人简介 -->
+            <section id="about" class="section-card anchor-offset">
+                <h2 class="section-title"><span class="flex items-center gap-2"><i class="fas fa-user-circle text-blue-600"></i> 个人简介</span></h2>
+                <div class="text-slate-600 text-[15px] leading-relaxed space-y-4 text-justify">
+                    <p>
+                        <strong>张成龙</strong>，博士后，现于香港中文大学（深圳）数据科学学院及中国科学技术大学信息科学技术学院从事博士后研究，
+                        合作导师：<span class="text-blue-700 font-bold">张大鹏教授</span>（加拿大皇家科学院院士、加拿大工程院院士、IEEE Life Fellow）、
+                        <span class="text-blue-700 font-bold">吴枫教授</span>（中国工程院院士、中国科学技术大学副校长、IEEE Fellow）。
+                        博士毕业于中国矿业大学计算机科学与技术学院（导师：<span class="text-blue-700 font-bold">丁世飞教授</span>，CAAI Fellow）。
+                    </p>
+                    <p>
+                        主要研究方向包括多模态学习、AI For Medicine、随机神经网络、群体智能优化等。主持中国博士后科学基金面上项目、国家重点实验室开放课题多项。出版英文学术专著1部，在 IEEE T-SMC、IEEE T-FS、IEEE T-ETCI、IEEE IoTJ、ICLR、Pattern Recognition、Information Sciences、Knowledge-Based Systems、计算机学报、软件学报等国内外重要期刊、会议发表学术论文40余篇。
+                    </p>
+                    <p class="bg-blue-50/50 p-4 rounded-lg border border-blue-100 text-blue-900 font-medium">
+                        <i class="fas fa-handshake text-blue-500 mr-2"></i> 与香港中文大学、香港中文大学（深圳）、澳门大学、中国科学技术大学、哈尔滨工业大学、中国矿业大学等保持长期合作。<strong>欢迎对本人研究方向感兴趣的同学合作交流！</strong>
+                    </p>
+                </div>
+            </section>
+
+            <!-- 最新动态 News -->
+            <section id="news" class="section-card anchor-offset">
+                <h2 class="section-title">
+                    <span class="flex items-center gap-2"><i class="fas fa-rss text-blue-600"></i> 最新动态 (News)</span>
+                    <span class="text-xs font-normal text-slate-400 bg-slate-100 px-2 py-1 rounded">Scroll to view</span>
+                </h2>
+                <div class="scroll-box max-h-[180px] px-4">
+                    <div class="news-item flex flex-col md:flex-row md:gap-4">
+                        <span class="text-blue-600 font-black min-w-[85px]">2025.03.17</span>
+                        <p class="text-slate-700 m-0">当选 <strong>中国人工智能学会青年工作委员会 (CAAI 青工委) 委员</strong>。</p>
+                    </div>
+                    <div class="news-item flex flex-col md:flex-row md:gap-4">
+                        <span class="text-blue-600 font-black min-w-[85px]">2025.03.11</span>
+                        <p class="text-slate-700 m-0">论文“面向脉搏波信号分类的可信增量集成学习”被计算机科学领域中文Top 1期刊 <strong>《计算机学报》</strong> 录用。</p>
+                    </div>
+                    <div class="news-item flex flex-col md:flex-row md:gap-4">
+                        <span class="text-blue-600 font-black min-w-[85px]">2026.01.10</span>
+                        <p class="text-slate-700 m-0">受邀成为 <em>Information Processing in Agriculture</em> (《中国科技期刊卓越行动计划》高起点新刊项目、SCI一区 Top) <strong>副主编</strong>。</p>
+                    </div>
+                    <div class="news-item flex flex-col md:flex-row md:gap-4">
+                        <span class="text-blue-600 font-black min-w-[85px]">2025.12.05</span>
+                        <p class="text-slate-700 m-0">参加中国情感智能大会，并当选为 CSIG 情感计算与理解专委会委员。</p>
+                    </div>
+                    <div class="news-item flex flex-col md:flex-row md:gap-4">
+                        <span class="text-blue-600 font-black min-w-[85px]">2025.12.04</span>
+                        <p class="text-slate-700 m-0">受邀于广州中医药大学作“基于随机配置理论的深度神经网络模型研究进展”报告。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 代表性论著 Publications -->
+            <section id="publications" class="section-card anchor-offset">
+                <h2 class="section-title">
+                    <span class="flex items-center gap-2"><i class="fas fa-book-open text-blue-600"></i> 代表性论著</span>
+                    <span class="text-xs font-normal text-slate-400 bg-slate-100 px-2 py-1 rounded">Scroll to view 17+ items</span>
+                </h2>
+                <div class="scroll-box max-h-[500px] px-2">
+                    <!-- 2026 -->
+                   <div class="list-item-hover pub-item text-slate-700"><strong>张成龙</strong>, 张大鹏,  戴世成, 李锦兴, 丁世飞. 面向脉搏波信号分类的可信增量集成学习 [J]. <strong>计算机学报</strong>. <span class="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded ml-1 font-bold shadow-sm">2026 录用</span> <span class="text-red-600 text-xs font-bold">[CCF T1]</span></div>
+
+
+     <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Zhang Z, Wang Y, Zhou P, Zhang D. Noise robust evolving hierarchical stochastic configuration architecture with multi-level sparse representation [J]. <strong>IEEE Transactions on Emerging Topics in Computational Intelligence</strong>, 2026. <span class="text-blue-600 text-xs font-bold">[JCR Q1]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700">Wang Y, Liu G, <strong>Zhang C*</strong>, et al. Sparse low-rank retargeted stochastic configuration networks for multiclass classification [J]. <strong>Expert Systems with Applications</strong>, 2026, 296: 128652. <span class="text-blue-600 text-xs font-bold">[JCR Q1]</span></div>
+
+                    <!-- 2025 -->
+                
+                    
+                    <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Guo C, Wu F, Zhang D. Robust decorrelated stochastic configuration network ensemble via weighted negative correlation learning [J]. <strong>IEEE Transactions on Systems, Man, and Cybernetics: Systems</strong>, 2025, 55(10): 6767-6776. <span class="text-blue-600 text-xs font-bold">[JCR Q1, CCF B]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Cheng D, Xue J, Wu F, Zhang D. Deep ensemble stochastic configuration network via graph intuitionistic fuzzy for depression recognition [J]. <strong>IEEE Transactions on Fuzzy Systems</strong>, 2025, 33(9): 2937-2949. <span class="text-blue-600 text-xs font-bold">[JCR Q1, CCF B]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700">Xue J*, <strong>Zhang C*</strong>, Wang M, et al. MOSSA: An efficient swarm intelligent algorithm to solve global optimization and carbon fiber drawing process problems [J]. <strong>IEEE Internet of Things Journal</strong>, 2025, 12(9): 11940-11953. <span class="text-blue-600 text-xs font-bold">[JCR Q1]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700">Wang X, <strong>Zhang C*</strong>, Hu J, et al. AEFusion: Adaptive enhanced fusion of visible and infrared images for night vision [J]. <strong>Remote Sensing</strong>, 2025, 17(18): 3129. <span class="text-blue-600 text-xs font-bold">[JCR Q1]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700">Ding S, Zhang Z*, <strong>Zhang C*</strong>, et al. Semi-supervised classification model with stochastic configuration networks [J]. <strong>Knowledge and Information Systems</strong>, 2025, 67: 10427–10449. <span class="text-blue-600 text-xs font-bold">[JCR Q2, CCF B]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Ding S, Wang Y, Zhang D. Advanced randomized neural networks for pattern analysis [M]. <strong>World Scientific Publishing Co. Pte Ltd</strong>, 2025. <span class="text-slate-400 font-bold bg-slate-100 px-1 rounded">[学术专著]</span></div>
+
+                    <!-- 2024 -->
+                    <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Wang Y, Zhang D. Greedy deep stochastic configuration networks ensemble with boosting negative correlation learning [J]. <strong>Information Sciences</strong>, 2024, 680: 121140. <span class="text-blue-600 text-xs font-bold">[JCR Q1, CCF B]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700"><strong>张成龙</strong>, 丁世飞, 郭丽丽, 等. 随机配置网络研究进展 [J]. <strong>软件学报</strong>, 2024, 35(5): 2379-2399. <span class="text-red-600 text-xs font-bold">[CCF T1]</span></div>
+
+                    <!-- 2023 -->
+                    <div class="list-item-hover pub-item text-slate-700">丁世飞, <strong>张成龙*</strong>, 郭丽丽, 张健*, 等. 基于M-estimator函数的加权深度随机配置网络 [J]. <strong>计算机学报</strong>, 2023, 46(11): 2476-2487. <span class="text-red-600 text-xs font-bold">[CCF T1]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700">Ding S, <strong>Zhang C*</strong>, Zhang J*, et al. Incremental multi-layer broad learning system with stochastic configuration algorithm for regression [J]. <strong>IEEE Transactions on Cognitive and Developmental Systems</strong>, 2023, 15(2): 877-886. <span class="text-blue-600 text-xs font-bold">[JCR Q1]</span></div>
+
+                    <!-- 2022 -->
+                    <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Ding S, Du W. Broad stochastic configuration network for regression [J]. <strong>Knowledge-Based Systems</strong>, 2022, 243: 108403. <span class="text-blue-600 text-xs font-bold">[JCR Q1]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Ding S, Guo L, et al. Broad learning system based ensemble deep model [J]. <strong>Soft Computing</strong>, 2022, 26(15): 7029-7041.</div>
+
+                    <!-- 2021 -->
+                    <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Ding S. A stochastic configuration network based on chaotic sparrow search algorithm [J]. <strong>Knowledge-Based Systems</strong>, 2021, 220: 106924. <span class="bg-red-50 text-red-600 border border-red-200 text-[10px] px-1.5 rounded font-bold ml-1">[ESI 热点/高被引]</span> <span class="text-blue-600 text-xs font-bold">[JCR Q1]</span></div>
+                    
+                    <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Ding S, Zhang J, et al. Parallel stochastic configuration networks for large-scale data regression [J]. <strong>Applied Soft Computing</strong>, 2021, 103: 107143.<span class="text-blue-600 text-xs font-bold">[JCR Q1]</span></div>
+
+                    
+                    <div class="list-item-hover pub-item text-slate-700"><strong>Zhang C</strong>, Ding S, Sun Y, et al. An optimized support vector regression for prediction of bearing degradation [J]. <strong>Applied Soft Computing</strong>, 2021, 113: 108008.<span class="text-blue-600 text-xs font-bold">[JCR Q1]</span></div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- 右侧侧边栏 (占据 4 列) -->
+        <aside class="lg:col-span-4 space-y-6">
+            
+            <!-- 联系方式 (深色高级感卡片置顶) -->
+            <section class="section-card bg-slate-800 text-white border-none shadow-xl relative overflow-hidden">
+                <div class="absolute -right-6 -top-6 text-slate-700 opacity-20 transform rotate-12">
+                    <i class="fas fa-address-card text-8xl"></i>
+                </div>
+                <h3 class="font-bold text-blue-400 text-[15px] mb-4 border-b border-slate-700 pb-2 flex items-center gap-2 relative z-10"><i class="fas fa-id-badge"></i> 联系方式</h3>
+                <div class="text-[13px] space-y-3 relative z-10 text-slate-200">
+                    <p class="flex items-start gap-3">
+                        <i class="fas fa-envelope text-blue-400 mt-1 w-4"></i> 
+                        <span class="break-all">zhangchl@ustc.edu.cn<br>zhangchl@cuhk.edu.cn</span>
+                    </p>
+                    <p class="flex items-start gap-3">
+                        <i class="fas fa-map-marker-alt text-blue-400 mt-1 w-4"></i> 
+                        <span>广东·深圳香港中文大学(深圳)<br>安徽·合肥中国科学技术大学</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- 工作经历 -->
+            <section class="section-card">
+                <h3 class="font-bold text-slate-800 text-[15px] mb-4 border-b border-slate-100 pb-2 flex items-center gap-2"><i class="fas fa-briefcase text-blue-600"></i> 工作经历</h3>
+                <div class="space-y-4">
+                    <div class="relative pl-5 border-l-2 border-blue-200">
+                        <div class="absolute w-2.5 h-2.5 bg-blue-500 rounded-full -left-[6px] top-1.5 ring-4 ring-white"></div>
+                        <div class="text-xs font-bold text-blue-600 mb-0.5">2023.10 - 至今</div>
+                        <div class="text-[14px] font-bold text-slate-800">香港中文大学 (深圳)</div>
+                        <div class="text-xs text-slate-500 mt-0.5">数据科学学院 · 博士后</div>
+                    </div>
+                    <div class="relative pl-5 border-l-2 border-slate-200">
+                        <div class="absolute w-2.5 h-2.5 bg-slate-300 rounded-full -left-[6px] top-1.5 ring-4 ring-white"></div>
+                        <div class="text-xs font-bold text-slate-600 mb-0.5">2023.09 - 至今</div>
+                        <div class="text-[14px] font-bold text-slate-800">中国科学技术大学</div>
+                        <div class="text-xs text-slate-500 mt-0.5">信息科学技术学院 · 博士后</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 教育经历 -->
+            <section class="section-card">
+                <h3 class="font-bold text-slate-800 text-[15px] mb-4 border-b border-slate-100 pb-2 flex items-center gap-2"><i class="fas fa-graduation-cap text-blue-600"></i> 教育经历</h3>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-[14px] text-slate-800">中国矿业大学</span>
+                            <span class="text-xs font-bold text-slate-500 bg-white px-2 py-0.5 rounded shadow-sm">2019-2023</span>
+                        </div>
+                        <div class="text-xs text-slate-600">计算机科学与技术 · 博士</div>
+                    </li>
+                    <li class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-[14px] text-slate-800">贵州大学</span>
+                            <span class="text-xs font-bold text-slate-500 bg-white px-2 py-0.5 rounded shadow-sm">2014-2017</span>
+                        </div>
+                        <div class="text-xs text-slate-600">通信与信息系统 · 硕士</div>
+                    </li>
+                    <li class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-[14px] text-slate-800">曲阜师范大学</span>
+                            <span class="text-xs font-bold text-slate-500 bg-white px-2 py-0.5 rounded shadow-sm">2010-2014</span>
+                        </div>
+                        <div class="text-xs text-slate-600">电子信息科学与技术 · 本科</div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 学术任职 -->
+            <section class="section-card">
+                <h3 class="font-bold text-slate-800 text-[15px] mb-4 border-b border-slate-100 pb-2 flex items-center gap-2"><i class="fas fa-award text-blue-600"></i> 学术任职</h3>
+                <ul class="text-[13px] space-y-2.5 text-slate-600 leading-snug">
+                    <li class="flex items-start gap-2"><i class="fas fa-check-circle text-blue-500 mt-0.5"></i> <span>CAAI 青年工作委员会 委员</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check-circle text-blue-500 mt-0.5"></i> <span><em>Information Processing in Agriculture</em> 副主编</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check-circle text-blue-500 mt-0.5"></i> <span>CAAI 粒计算与知识发现专委会委员</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check-circle text-blue-500 mt-0.5"></i> <span>CAAI 知识工程与分布智能专委会青年委员</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check-circle text-blue-500 mt-0.5"></i> <span>CSIG 情感计算与理解专委会委员</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check-circle text-blue-500 mt-0.5"></i> <span>《山东科技大学（自然科学版）》青年编委</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check-circle text-blue-500 mt-0.5"></i> <span>深圳市龙岗区驻区高校特聘人才</span></li>
+                </ul>
+            </section>
+
+        </aside>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-white border-t border-slate-200 mt-10 py-8 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="text-[13px] text-slate-500 font-medium">© 2026 张成龙 · Chenglong Zhang. All Rights Reserved.</p>
+            <p class="text-[11px] text-slate-400 mt-1">Designed for Academic Portfolio</p>
+        </div>
+    </footer>
+
+</body>
+</html>
